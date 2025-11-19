@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
             insets
         }
         val textViewUsername = findViewById<TextView>(R.id.textViewUsername)
-        val Usr: String = intent.getStringExtra("userEmail").toString()?:""
+        val Usr: String = intent.getStringExtra("emailAddress").toString()?:""
         textViewUsername.text = "Hey there, $Usr"
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewCatalog)
