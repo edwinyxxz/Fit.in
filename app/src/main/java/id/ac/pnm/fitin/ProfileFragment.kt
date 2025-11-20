@@ -20,8 +20,7 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val imageViewLogout = view.findViewById<ImageView>(R.id.imageViewLogout)
+        
 
     }
 
