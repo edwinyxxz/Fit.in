@@ -24,6 +24,7 @@ class CatalogAdapter(val data: List<Catalog>, val onClickOpenDetailProductActivi
         holder.image.setImageResource(catalog.Image)
         holder.textViewPrice.text = catalog.Price
         holder.textViewName.text = catalog.Name
+        holder.textViewDeskripsi.text = catalog.Deskripsi
         holder.textViewCategory.text = catalog.Category.toString()
 
         holder.row.setOnClickListener { onClickOpenDetailProductActivity(catalog) }
@@ -33,6 +34,7 @@ class CatalogAdapter(val data: List<Catalog>, val onClickOpenDetailProductActivi
         val image = row.findViewById<ImageView>(R.id.image_product)
         val textViewPrice = row.findViewById<TextView>(R.id.textViewPrice)
         val textViewName = row.findViewById<TextView>(R.id.textViewName)
+        val textViewDeskripsi = row.findViewById<TextView>(R.id.textViewDeskripsi)
         val textViewCategory = row.findViewById<TextView>(R.id.textViewCategory)
     }
 }

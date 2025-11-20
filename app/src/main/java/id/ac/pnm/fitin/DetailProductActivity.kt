@@ -22,9 +22,12 @@ class DetailProductActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        val imageViewBack = findViewById<ImageView>(R.id.imageViewBack)
         val imageDetailProduct = findViewById<ImageView>(R.id.image_Detailproduct)
         val textViewDetailJudul = findViewById<TextView>(R.id.textViewDetailName)
+        val textViewDeskripsi = findViewById<TextView>(R.id.textViewDeskripsi)
         val textViewDetailHarga = findViewById<TextView>(R.id.textViewDetailPrice)
+        val addCart = findViewById<ImageView>(R.id.addCart)
         val textViewDetailkategori = findViewById<TextView>(R.id.textViewDetailCategory)
         val btnBeli = findViewById<Button>(R.id.buttonBeli)
 
@@ -32,11 +35,20 @@ class DetailProductActivity : AppCompatActivity() {
         imageDetailProduct.setImageResource(img)
         val judul: String = intent.getStringExtra("judul").toString()?:""
         textViewDetailJudul.text = "$judul"
+        val deskripsi: String = intent.getStringExtra("deskripsi").toString()?:""
+        textViewDeskripsi.text = "$deskripsi"
         val harga: String = intent.getStringExtra("harga").toString()?:""
         textViewDetailHarga.text = "$harga"
         val kategori: String = intent.getStringExtra("kategori").toString()?:""
         textViewDetailkategori.text = "$kategori"
 
+        imageViewBack.setOnClickListener {
+            val intent = Intent(
+                this,
+                MainActivity::class.java
+            )
+            startActivity(intent)
+        }
         btnBeli.setOnClickListener {
             val intentChat = Intent(Intent.ACTION_VIEW,
                 Uri.parse("https://wa.me/6282334500709?text=Halo,%20saya%20beli%20product${judul}"))
