@@ -4,8 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.PopupMenu
 import android.widget.SearchView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -23,54 +26,79 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val adapter = CatalogAdapter(getCatalog(), ::openDetailProduct)
         val textViewUsername = view.findViewById<TextView>(R.id.textViewUsername)
         textViewUsername.text = "Hey there"
         val searchView = view.findViewById<SearchView>(R.id.searchView)
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewCatalog)
-        recyclerView.adapter = CatalogAdapter(getCatalog(), ::openDetailProduct)
-    }
+        recyclerView.adapter = adapter
+        val filterCategory = view.findViewById<ImageView>(R.id.filterCategory)
 
+
+
+        filterCategory.setOnClickListener { anchor ->
+            val popup = PopupMenu(requireContext(), anchor)
+            popup.menuInflater.inflate(R.menu.toolbar_category, popup.menu)
+
+
+            // event klik item
+        popup.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.semua -> adapter.filterCategory(null)
+                R.id.jaket -> adapter.filterCategory(Category.Jaket)
+                R.id.kemeja -> adapter.filterCategory(Category.Kemeja)
+                R.id.knit -> adapter.filterCategory(Category.Knit)
+                R.id.cardigan -> adapter.filterCategory(Category.Cardigan)
+                R.id.dasi -> adapter.filterCategory(Category.Dasi)
+                R.id.celana -> adapter.filterCategory(Category.Celana)
+                else -> false
+            }
+            true
+        }
+        popup.show()
+    }
+    }
     fun getCatalog(): List<Catalog> {
         val data = mutableListOf<Catalog>()
         data.add(Catalog(
             R.drawable.celana,
             "Cattwin Reworked pants",
-            "Rp. 250.000",
+            250000,
             "Celana baggy jeans dengan bahan yang ringan",
             Category.Celana
         ))
         data.add(Catalog(
             R.drawable.knit,
             "Totoro day's",
-            "Rp. 200.000",
+             200000,
             "knitt dirajut dengan benang woll dan motif unik",
             Category.Knit
         ))
         data.add(Catalog(
             R.drawable.jaket,
             "Memorable autumn in collage",
-            "Rp. 250.000",
+            250000,
             "jaket boxy terbuat dari bahan kulit tebal",
             Category.Jaket
         ))
         data.add(Catalog(
             R.drawable.kemeja,
             "Fragmenta caeli",
-            "200.000",
+            200000,
             "Kemeja berbahan fanell dengan motif yang unik",
             Category.Kemeja
         ))
         data.add(Catalog(
             R.drawable.dasi,
             "Dasi Mix Collection",
-            "Rp. 50.000",
+            50000,
             "Dasi memiliki panjang 30cm dengan motif bunga",
             Category.Dasi
         ))
         data.add(Catalog(
             R.drawable.cardigan,
             "Doctorium cardigan",
-            "Rp. 150.000",
+            150000,
             "cardigan terbuat dari bahan wol dengan ketebalan ..",
             Category.Cardigan
         ))

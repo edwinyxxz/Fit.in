@@ -2,7 +2,7 @@ package id.ac.pnm.fitin
 data class Catalog(
     val Image: Int,
     val Name: String,
-    val Price: String,
+    val Price: Int,
     val Deskripsi: String,
     val Category: Category
 )

@@ -7,7 +7,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class CatalogAdapter(val data: List<Catalog>, val onClickOpenDetailProductActivity: (Catalog)-> Unit): RecyclerView.Adapter<CatalogAdapter.CatalogViewHolder>() {
+class CatalogAdapter(val data: List<Catalog>, val onClickOpenDetailProductActivity: (Catalog)-> Unit):
+    RecyclerView.Adapter<CatalogAdapter.CatalogViewHolder>() {
+    private var filterData: MutableList<Catalog> = data.toMutableList()
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -16,25 +19,36 @@ class CatalogAdapter(val data: List<Catalog>, val onClickOpenDetailProductActivi
             LayoutInflater.from(parent.context).inflate(R.layout.item_catalog, parent, false)
         return CatalogViewHolder(layout)
     }
+    fun filterCategory(category: Category?) {
+        filterData = if (category == null) {
+            data.toMutableList()
+        } else {
+            data.filter { it.Category == category }.toMutableList()
+        }
+        notifyDataSetChanged()
+    }
+
     override fun onBindViewHolder(
         holder: CatalogViewHolder,
         position: Int
     ) {
-        val catalog: Catalog = data[position]
+        val catalog: Catalog = filterData[position]
         holder.image.setImageResource(catalog.Image)
-        holder.textViewPrice.text = catalog.Price
+        holder.textViewPrice.text = "Rp ${catalog.Price}"
         holder.textViewName.text = catalog.Name
         holder.textViewDeskripsi.text = catalog.Deskripsi
         holder.textViewCategory.text = catalog.Category.toString()
 
         holder.row.setOnClickListener { onClickOpenDetailProductActivity(catalog) }
     }
-    override fun getItemCount(): Int = data.size
+    override fun getItemCount(): Int = filterData.size
     class CatalogViewHolder(val row: View) : RecyclerView.ViewHolder(row) {
         val image = row.findViewById<ImageView>(R.id.image_product)
         val textViewPrice = row.findViewById<TextView>(R.id.textViewPrice)
         val textViewName = row.findViewById<TextView>(R.id.textViewName)
         val textViewDeskripsi = row.findViewById<TextView>(R.id.textViewDeskripsi)
         val textViewCategory = row.findViewById<TextView>(R.id.textViewCategory)
+        val filterCategory = row.findViewById<ImageView>(R.id.filterCategory)
+        val filterColor = row.findViewById<ImageView>(R.id.filterColor)
     }
 }

@@ -19,6 +19,7 @@ class RegisterActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        val username = findViewById<EditText>(R.id.editTextTextUsername)
         val email = findViewById<EditText>(R.id.editTextTextEmailAddressRegis)
         val alamat = findViewById<EditText>(R.id.editTextAlamat)
         val noHP = findViewById<EditText>(R.id.editTextPhone)
