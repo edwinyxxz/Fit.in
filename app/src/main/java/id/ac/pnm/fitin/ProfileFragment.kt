@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 
 class ProfileFragment : Fragment() {
 
@@ -21,7 +22,14 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         
+        val imageViewLogout = view.findViewById<ImageView>(R.id.imageViewLogout)
+        val Logout = view.findViewById<TextView>(R.id.Logout)
 
+        imageViewLogout.setOnClickListener {
+            val intent = Intent(requireActivity(), LoginActivity::class.java)
+            startActivity(intent)
+            requireActivity().finish()
+        }
     }
 
 }
