@@ -33,14 +33,13 @@ class HomeFragment : Fragment() {
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewCatalog)
         recyclerView.adapter = adapter
         val filterCategory = view.findViewById<ImageView>(R.id.filterCategory)
+        val filterColor = view.findViewById<ImageView>(R.id.filterColor)
 
 
 
         filterCategory.setOnClickListener { anchor ->
             val popup = PopupMenu(requireContext(), anchor)
             popup.menuInflater.inflate(R.menu.toolbar_category, popup.menu)
-
-
             // event klik item
         popup.setOnMenuItemClickListener { item ->
             when (item.itemId) {
@@ -57,6 +56,27 @@ class HomeFragment : Fragment() {
         }
         popup.show()
     }
+
+        filterColor.setOnClickListener { anchor ->
+            val popup = PopupMenu(requireContext(), anchor)
+            popup.menuInflater.inflate(R.menu.toolbar_color, popup.menu)
+            // event klik item
+            popup.setOnMenuItemClickListener { item ->
+                when (item.itemId) {
+                    R.id.Semua -> adapter.filterColor(null)
+                    R.id.Hitam -> adapter.filterColor(Color.Hitam)
+                    R.id.Putih -> adapter.filterColor(Color.Putih)
+                    R.id.Cream -> adapter.filterColor(Color.Cream)
+                    R.id.Hijau -> adapter.filterColor(Color.Hijau)
+                    R.id.Biru -> adapter.filterColor(Color.Biru)
+                    else -> false
+                }
+                true
+            }
+            popup.show()
+        }
+
+
     }
     fun getCatalog(): List<Catalog> {
         val data = mutableListOf<Catalog>()
@@ -65,6 +85,7 @@ class HomeFragment : Fragment() {
             "Cattwin Reworked pants",
             250000,
             "Celana baggy jeans dengan bahan yang ringan",
+            Color.Hitam,
             Category.Celana
         ))
         data.add(Catalog(
@@ -72,6 +93,7 @@ class HomeFragment : Fragment() {
             "Totoro day's",
              200000,
             "knitt dirajut dengan benang woll dan motif unik",
+            Color.Hijau,
             Category.Knit
         ))
         data.add(Catalog(
@@ -79,6 +101,7 @@ class HomeFragment : Fragment() {
             "Memorable autumn in collage",
             250000,
             "jaket boxy terbuat dari bahan kulit tebal",
+            Color.Cream,
             Category.Jaket
         ))
         data.add(Catalog(
@@ -86,6 +109,7 @@ class HomeFragment : Fragment() {
             "Fragmenta caeli",
             200000,
             "Kemeja berbahan fanell dengan motif yang unik",
+            Color.Hijau,
             Category.Kemeja
         ))
         data.add(Catalog(
@@ -93,6 +117,7 @@ class HomeFragment : Fragment() {
             "Dasi Mix Collection",
             50000,
             "Dasi memiliki panjang 30cm dengan motif bunga",
+            Color.Biru,
             Category.Dasi
         ))
         data.add(Catalog(
@@ -100,6 +125,7 @@ class HomeFragment : Fragment() {
             "Doctorium cardigan",
             150000,
             "cardigan terbuat dari bahan wol dengan ketebalan ..",
+            Color.Cream,
             Category.Cardigan
         ))
         return data
@@ -112,6 +138,7 @@ class HomeFragment : Fragment() {
         intentMainToDetail.putExtra("harga", catalog.Price)
         intentMainToDetail.putExtra("deskripsi", catalog.Deskripsi)
         intentMainToDetail.putExtra("kategori", catalog.Category.name)
+        intentMainToDetail.putExtra("color", catalog.Color.name)
         startActivity(intentMainToDetail)
     }
 }
