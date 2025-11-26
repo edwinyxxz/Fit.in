@@ -8,7 +8,7 @@
     android:fitsSystemWindows="true">
 
     <TextView
-        android:id="@+id/textViewUsername"
+        android:id="@+id/textViewUsernameProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="18dp"
@@ -32,7 +32,7 @@
         android:queryHint="Search here..."
         app:layout_constraintEnd_toStartOf="@+id/filterColor"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewUsername" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewUsernameProfile" />
 
     <ImageView
         android:id="@+id/filterCategory"

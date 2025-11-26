@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Profile"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:textStyle="bold"
         android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,15 +37,15 @@
         android:layout_marginLeft="50dp"
         android:layout_marginTop="73dp"
         android:hint="Username"
-        android:textSize="15dp"
+        android:textSize="15sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <TextView
-        android:id="@+id/textViewUsername"
+        android:id="@+id/textViewUsernameProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="17dp"
+        android:textSize="17sp"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="50dp"
         android:text="Azza Auliyaul"
@@ -56,18 +56,18 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="15dp"
+        android:textSize="15sp"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="50dp"
         android:hint="Password"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewUsername" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewUsernameProfile" />
 
     <TextView
-        android:id="@+id/textViewPassword"
+        android:id="@+id/textViewPasswordProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="17dp"
+        android:textSize="17sp"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="50dp"
         android:text="xxxxxxx"
@@ -78,18 +78,18 @@
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="15dp"
+        android:textSize="15sp"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="50dp"
         android:hint="Phone Number"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewPasswordProfile" />
 
     <TextView
-        android:id="@+id/textViewPhoneNumber"
+        android:id="@+id/textViewPhoneNumberProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="17dp"
+        android:textSize="17sp"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="50dp"
         android:text="089523344981"
@@ -100,18 +100,18 @@
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="15dp"
+        android:textSize="15sp"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="50dp"
         android:hint="Email Address"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewPhoneNumber" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewPhoneNumberProfile" />
 
     <TextView
-        android:id="@+id/textViewEmail"
+        android:id="@+id/textViewEmailProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="17dp"
+        android:textSize="17sp"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="50dp"
         android:text="azzaauliyaul@gmail.com"
@@ -122,18 +122,18 @@
         android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="15dp"
+        android:textSize="15sp"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="20dp"
         android:hint="Address"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewEmailProfile" />
 
     <TextView
-        android:id="@+id/textViewAddress"
+        android:id="@+id/textViewAddressProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="17dp"
+        android:textSize="17sp"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="50dp"
         android:text="Jl.fdfghfh RT12/Rw23, adfdggr"
@@ -146,19 +146,19 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="55dp"
         android:hint="Logout"
-        android:textSize="17dp"
+        android:textSize="17sp"
         app:layout_constraintEnd_toStartOf="@+id/imageViewLogout"
         app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/textViewAddress" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewAddressProfile" />
 
     <ImageView
         android:id="@+id/imageViewLogout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="55dp"
-        android:textSize="17dp"
+        android:textSize="17sp"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/textViewAddress"
+        app:layout_constraintTop_toBottomOf="@+id/textViewAddressProfile"
         app:srcCompat="@drawable/logout" />
 
 

@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -27,7 +26,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val adapter = CatalogAdapter(getCatalog(), ::openDetailProduct)
-        val textViewUsername = view.findViewById<TextView>(R.id.textViewUsername)
+        val textViewUsername = view.findViewById<TextView>(R.id.textViewUsernameProfile)
         textViewUsername.text = "Hey there"
         val searchView = view.findViewById<SearchView>(R.id.searchView)
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewCatalog)

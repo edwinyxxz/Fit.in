@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 
 class ProfileFragment : Fragment() {
 
@@ -24,12 +25,33 @@ class ProfileFragment : Fragment() {
         
         val imageViewLogout = view.findViewById<ImageView>(R.id.imageViewLogout)
         val Logout = view.findViewById<TextView>(R.id.Logout)
+        val username = view.findViewById<TextView>(R.id.textViewUsernameProfile)
+        val email = view.findViewById<TextView>(R.id.textViewEmailProfile)
+        val alamat = view.findViewById<TextView>(R.id.textViewAddressProfile)
+        val noTelp = view.findViewById<TextView>(R.id.textViewPhoneNumberProfile)
+        val password = view.findViewById<TextView>(R.id.textViewPasswordProfile)
 
+        val akun = dataTitipan
+
+        fun viewProfile(akun: Akun){
+            username.text = "${akun.username}"
+            email.text = "${akun.email}"
+            alamat.text = "${akun.alamat}"
+            noTelp.text = "${akun.noTelp}"
+            password.text = "${akun.password}"
+        }
+        if (akun != null) {
+            viewProfile(akun)
+        } else{
+            Toast.makeText(requireContext(),"suki", Toast.LENGTH_SHORT).show()
+        }
         imageViewLogout.setOnClickListener {
             val intent = Intent(requireActivity(), LoginActivity::class.java)
             startActivity(intent)
             requireActivity().finish()
         }
     }
-
+    companion object{
+        var dataTitipan: Akun? = null
+    }
 }

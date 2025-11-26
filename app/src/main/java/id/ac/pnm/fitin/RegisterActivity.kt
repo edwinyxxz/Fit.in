@@ -1,5 +1,6 @@
 package id.ac.pnm.fitin
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -19,20 +20,29 @@ class RegisterActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val username = findViewById<EditText>(R.id.editTextTextUsername)
-        val email = findViewById<EditText>(R.id.editTextTextEmailAddressRegis)
-        val alamat = findViewById<EditText>(R.id.editTextAlamat)
-        val noHP = findViewById<EditText>(R.id.editTextPhone)
-        val password = findViewById<EditText>(R.id.editTextTextPasswordRegis)
+        val editTextUsername = findViewById<EditText>(R.id.editTextTextUsername)
+        val editTextEmail = findViewById<EditText>(R.id.editTextTextEmailAddressRegis)
+        val editTextAlamat = findViewById<EditText>(R.id.editTextAlamat)
+        val editTextNoTelp = findViewById<EditText>(R.id.editTextPhone)
+        val editTextPassword = findViewById<EditText>(R.id.editTextTextPasswordRegis)
         val btnRegister = findViewById<Button>(R.id.buttonRegister)
 
+        fun register(): Akun {
+            // Ambil text langsung dari widget
+            return Akun(
+                editTextUsername.text.toString(),
+                editTextEmail.text.toString(),
+                editTextAlamat.text.toString(),
+                editTextNoTelp.text.toString(),
+                editTextPassword.text.toString()
+            )
+        }
+
         btnRegister.setOnClickListener {
-            val email: String = email.text.toString()
-            val password: String = password.text.toString()
-            val intentToLogin = Intent(this, LoginActivity::class.java)
-            intentToLogin.putExtra("emailRegis", email)
-            intentToLogin.putExtra("passwordRegis", password)
-            startActivity(intentToLogin)
+            val akunBaru = register()
+            ProfileFragment.dataTitipan = akunBaru
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
         }
     }
 }
