@@ -43,7 +43,7 @@ class ProfileFragment : Fragment() {
         if (akun != null) {
             viewProfile(akun)
         } else{
-            Toast.makeText(requireContext(),"suki", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(),"Data Kosong", Toast.LENGTH_SHORT).show()
         }
         imageViewLogout.setOnClickListener {
             val intent = Intent(requireActivity(), LoginActivity::class.java)
