@@ -27,7 +27,7 @@ class DetailProductActivity : AppCompatActivity() {
         val textViewDetailJudul = findViewById<TextView>(R.id.textViewDetailName)
         val textViewDeskripsi = findViewById<TextView>(R.id.textViewDeskripsi)
         val textViewDetailHarga = findViewById<TextView>(R.id.textViewDetailPrice)
-        val addCart = findViewById<ImageView>(R.id.addCart)
+        val btnAddCart = findViewById<ImageView>(R.id.addCart)
         val textViewDetailkategori = findViewById<TextView>(R.id.textViewDetailCategory)
         val textViewDetailColor = findViewById<TextView>(R.id.textViewDetailColor)
         val btnBeli = findViewById<Button>(R.id.buttonBeli)
@@ -38,7 +38,7 @@ class DetailProductActivity : AppCompatActivity() {
         textViewDetailJudul.text = "$judul"
         val deskripsi: String = intent.getStringExtra("deskripsi").toString()?:""
         textViewDeskripsi.text = "$deskripsi"
-        val harga = intent.getIntExtra("harga", 0).toString()?:""
+        val harga = intent.getIntExtra("harga", 0)
         textViewDetailHarga.text = "$harga"
         val kategori: String = intent.getStringExtra("kategori").toString()?:""
         textViewDetailkategori.text = "$kategori"
@@ -56,6 +56,10 @@ class DetailProductActivity : AppCompatActivity() {
             val intentChat = Intent(Intent.ACTION_VIEW,
                 Uri.parse("https://wa.me/6282334500709?text=Halo,%20saya%20beli%20product${judul}"))
             startActivity(intentChat)
+        }
+        btnAddCart.setOnClickListener {
+            val newCart = ItemCart(img, judul, harga, kategori)
+            CartFragment.dataCart.add(newCart)
         }
     }
 }
