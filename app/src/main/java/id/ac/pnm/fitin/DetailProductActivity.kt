@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -60,6 +61,7 @@ class DetailProductActivity : AppCompatActivity() {
         btnAddCart.setOnClickListener {
             val newCart = ItemCart(img, judul, harga, kategori)
             CartFragment.dataCart.add(newCart)
+            Toast.makeText(this, "Product ditambahkan ke keranjang", Toast.LENGTH_SHORT).show()
         }
     }
 }

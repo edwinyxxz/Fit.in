@@ -3,11 +3,13 @@ package id.ac.pnm.fitin
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 
-class CartAdapter(val data: List<ItemCart>): RecyclerView.Adapter<CartAdapter.CartViewHolder>(){
+class CartAdapter(val data: MutableList<ItemCart>): RecyclerView.Adapter<CartAdapter.CartViewHolder>(){
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -26,6 +28,13 @@ class CartAdapter(val data: List<ItemCart>): RecyclerView.Adapter<CartAdapter.Ca
         holder.textViewName.text = dataCart.Name
         holder.textViewPrice.text = "${dataCart.Price}"
         holder.textViewCategory.text = dataCart.Category
+        holder.btnDelete.setOnClickListener {
+            val cart = holder.bindingAdapterPosition
+            data.remove(dataCart)
+            notifyItemRemoved(cart)
+            notifyItemRangeChanged(cart, data.size)
+            Toast.makeText(holder.itemView.context, "Product dihapus dari keranjang", Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun getItemCount(): Int {
@@ -37,5 +46,7 @@ class CartAdapter(val data: List<ItemCart>): RecyclerView.Adapter<CartAdapter.Ca
         val textViewPrice = row.findViewById<TextView>(R.id.textViewPrice)
         val textViewName = row.findViewById<TextView>(R.id.textViewName)
         val textViewCategory = row.findViewById<TextView>(R.id.textViewCategory)
+        val btnDelete = row.findViewById<ImageView>(R.id.Delete)
+        val checkbox = row.findViewById<CheckBox>(R.id.checkBox)
     }
 }
