@@ -3,6 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/categoty"
+        android:title="CATEGORY" />
+    <item
         android:id="@+id/semua"
         android:title="semua"/>
     <item

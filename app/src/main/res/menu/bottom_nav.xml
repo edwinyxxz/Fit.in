@@ -5,11 +5,11 @@
         android:id="@+id/homeFragment"
         android:icon="@drawable/home"/>
     <item
-        android:title="Item"
+        android:title="Cart"
         android:id="@+id/cartFragment"
         android:icon="@drawable/cart"/>
     <item
-        android:title="Item"
+        android:title="Profile"
         android:id="@+id/profileFragment"
         android:icon="@drawable/account"/>
 </menu>

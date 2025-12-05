@@ -3,6 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/Color"
+        android:title="COLOR" />
+    <item
         android:id="@+id/Semua"
         android:title="Semua" />
     <item

@@ -24,6 +24,7 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         
         val imageViewLogout = view.findViewById<ImageView>(R.id.imageViewLogout)
+        val imageViewProfile = view.findViewById<ImageView>(R.id.imageView)
         val Logout = view.findViewById<TextView>(R.id.Logout)
         val username = view.findViewById<TextView>(R.id.textViewUsernameProfile)
         val email = view.findViewById<TextView>(R.id.textViewEmailProfile)
@@ -34,6 +35,7 @@ class ProfileFragment : Fragment() {
         val akun = dataTitipan
 
         fun viewProfile(akun: Akun){
+            imageViewProfile.setImageResource(R.drawable.profile)
             username.text = "${akun.username}"
             email.text = "${akun.email}"
             alamat.text = "${akun.alamat}"

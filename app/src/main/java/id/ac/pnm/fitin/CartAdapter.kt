@@ -26,7 +26,7 @@ class CartAdapter(val data: MutableList<ItemCart>): RecyclerView.Adapter<CartAda
         val dataCart = data[position]
         holder.image.setImageResource(dataCart.Image)
         holder.textViewName.text = dataCart.Name
-        holder.textViewPrice.text = "${dataCart.Price}"
+        holder.textViewPrice.text = "Rp ${dataCart.Price}"
         holder.textViewCategory.text = dataCart.Category
         holder.btnDelete.setOnClickListener {
             val cart = holder.bindingAdapterPosition
