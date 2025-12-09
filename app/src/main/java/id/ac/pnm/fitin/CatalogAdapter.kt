@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.SearchView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
@@ -12,6 +13,7 @@ class CatalogAdapter(val data: List<Catalog>, val onClickOpenDetailProductActivi
     var filterData: MutableList<Catalog> = data.toMutableList()
     var selectedCategory: Category? = null
     var selectedColor: Color? = null
+    var searchQuery: String = ""
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -30,15 +32,27 @@ class CatalogAdapter(val data: List<Catalog>, val onClickOpenDetailProductActivi
         filter()
     }
 
+    fun filterSearch(query: String) {
+        searchQuery = query
+        filter()
+    }
+
     fun filter() {
         filterData = data.filter { item ->
-            val matchCategory = selectedCategory?.let { item.Category == it } ?: true
-            val matchColor = selectedColor?.let { item.Color == it } ?: true
-            matchCategory && matchColor
+            val matchCategory =
+                selectedCategory?.let { item.Category == it } ?: true
+            val matchColor =
+                selectedColor?.let { item.Color == it } ?: true
+            val matchSearch =
+                item.Name.contains(searchQuery, ignoreCase = true)
+                item.Category.toString().contains(searchQuery, ignoreCase = true)
+                item.Color.toString().contains(searchQuery, ignoreCase = true)
+            matchCategory&&matchColor&&matchSearch
         }.toMutableList()
 
         notifyDataSetChanged()
     }
+
 
     override fun onBindViewHolder(
         holder: CatalogViewHolder,
@@ -55,6 +69,7 @@ class CatalogAdapter(val data: List<Catalog>, val onClickOpenDetailProductActivi
     }
     override fun getItemCount(): Int = filterData.size
     class CatalogViewHolder(val row: View) : RecyclerView.ViewHolder(row) {
+        val searchView = row.findViewById<SearchView>(R.id.searchView)
         val image = row.findViewById<ImageView>(R.id.image_product)
         val textViewPrice = row.findViewById<TextView>(R.id.textViewPrice)
         val textViewName = row.findViewById<TextView>(R.id.textViewName)

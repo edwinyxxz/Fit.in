@@ -75,6 +75,18 @@ class HomeFragment : Fragment() {
             popup.show()
         }
 
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                adapter.filterSearch(newText ?: "")
+                return true
+            }
+        })
+
+
 
     }
     fun getCatalog(): List<Catalog> {
