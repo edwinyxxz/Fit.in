@@ -45,8 +45,6 @@ class CatalogAdapter(val data: List<Catalog>, val onClickOpenDetailProductActivi
                 selectedColor?.let { item.Color == it } ?: true
             val matchSearch =
                 item.Name.contains(searchQuery, ignoreCase = true)
-                item.Category.toString().contains(searchQuery, ignoreCase = true)
-                item.Color.toString().contains(searchQuery, ignoreCase = true)
             matchCategory&&matchColor&&matchSearch
         }.toMutableList()
 
