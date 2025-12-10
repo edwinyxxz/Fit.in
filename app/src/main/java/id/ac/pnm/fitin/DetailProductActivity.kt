@@ -40,7 +40,7 @@ class DetailProductActivity : AppCompatActivity() {
         val deskripsi: String = intent.getStringExtra("deskripsi").toString()?:""
         textViewDeskripsi.text = "$deskripsi"
         val harga = intent.getIntExtra("harga", 0)
-        textViewDetailHarga.text = "Rp $harga"
+        textViewDetailHarga.text = "Rp. $harga"
         val kategori: String = intent.getStringExtra("kategori").toString()?:""
         textViewDetailkategori.text = "$kategori"
         val color: String = intent.getStringExtra("color").toString()?:""

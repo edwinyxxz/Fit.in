@@ -60,7 +60,7 @@ class CatalogAdapter(val data: List<Catalog>, val onClickOpenDetailProductActivi
     ) {
         val catalog: Catalog = filterData[position]
         holder.image.setImageResource(catalog.Image)
-        holder.textViewPrice.text = "Rp ${catalog.Price}"
+        holder.textViewPrice.text = "Rp. ${catalog.Price}"
         holder.textViewName.text = catalog.Name
         holder.textViewDeskripsi.text = catalog.Deskripsi
         holder.textViewCategory.text = catalog.Category.toString()

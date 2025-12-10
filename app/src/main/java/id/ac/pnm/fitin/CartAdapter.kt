@@ -9,7 +9,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 
-class CartAdapter(val data: MutableList<ItemCart>): RecyclerView.Adapter<CartAdapter.CartViewHolder>(){
+class CartAdapter(val data: MutableList<ItemCart>, val onCheckedChange: (Int) -> Unit): RecyclerView.Adapter<CartAdapter.CartViewHolder>(){
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -19,6 +19,7 @@ class CartAdapter(val data: MutableList<ItemCart>): RecyclerView.Adapter<CartAda
         return CartViewHolder(layout)
     }
 
+    var total = 0
     override fun onBindViewHolder(
         holder: CartViewHolder,
         position: Int
@@ -26,14 +27,26 @@ class CartAdapter(val data: MutableList<ItemCart>): RecyclerView.Adapter<CartAda
         val dataCart = data[position]
         holder.image.setImageResource(dataCart.Image)
         holder.textViewName.text = dataCart.Name
-        holder.textViewPrice.text = "Rp ${dataCart.Price}"
+        holder.textViewPrice.text = "Rp. ${dataCart.Price}"
         holder.textViewCategory.text = dataCart.Category
+        holder.checkbox.isChecked = dataCart.isChecked
+
+        // Listener
+        holder.checkbox.setOnCheckedChangeListener { _, isChecked ->
+            dataCart.isChecked = isChecked
+
+            val total = data.filter { it.isChecked }.sumOf { it.Price }
+            onCheckedChange(total)
+        }
+
         holder.btnDelete.setOnClickListener {
             val cart = holder.bindingAdapterPosition
             data.remove(dataCart)
             notifyItemRemoved(cart)
             notifyItemRangeChanged(cart, data.size)
             Toast.makeText(holder.itemView.context, "Product dihapus dari keranjang", Toast.LENGTH_SHORT).show()
+            val total = data.filter { it.isChecked }.sumOf { it.Price }
+            onCheckedChange(total)
         }
     }
 

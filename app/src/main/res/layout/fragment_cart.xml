@@ -71,7 +71,7 @@
         android:id="@+id/textViewCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Rp. 30.000"
+        android:text="Rp. 0"
         android:textAppearance="?attr/textAppearanceHeadline6"
         app:layout_constraintBottom_toBottomOf="@+id/buttonPesan"
         app:layout_constraintStart_toStartOf="@+id/textView"
