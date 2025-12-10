@@ -28,7 +28,6 @@ class RegisterActivity : AppCompatActivity() {
         val btnRegister = findViewById<Button>(R.id.buttonRegister)
 
         fun register(): Akun {
-            // Ambil text langsung dari widget
             return Akun(
                 editTextUsername.text.toString(),
                 editTextEmail.text.toString(),

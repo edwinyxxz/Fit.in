@@ -36,7 +36,7 @@ class LoginActivity : AppCompatActivity() {
                 val intentLogin2Main = Intent(this, MainActivity::class.java)
                 startActivity(intentLogin2Main)
             } else {
-                Toast.makeText(this, "Email atau password salah, silahkan coba lagi", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Email atau password salah, silahkan coba lagi", Toast.LENGTH_SHORT).show()
             }
         }
         register.setOnClickListener {

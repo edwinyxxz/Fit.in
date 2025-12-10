@@ -34,7 +34,6 @@ class CartFragment : Fragment() {
                 return@setOnClickListener
             }
 
-            // 2. Ada product tetapi belum dicentang
             val checked = dataCart.filter { it.isChecked }
             if (checked.isEmpty()) {
                 Toast.makeText(requireContext(), "Checklist product terlebih dahulu", Toast.LENGTH_SHORT).show()
