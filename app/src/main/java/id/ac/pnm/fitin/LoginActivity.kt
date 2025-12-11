@@ -33,6 +33,7 @@ class LoginActivity : AppCompatActivity() {
 
             if(email == akunLogin?.email && password == akunLogin.password){
                 val intentLogin2Main = Intent(this, MainActivity::class.java)
+                intentLogin2Main.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intentLogin2Main)
             } else {
                 Toast.makeText(this, "Email atau password salah, silahkan coba lagi", Toast.LENGTH_SHORT).show()
